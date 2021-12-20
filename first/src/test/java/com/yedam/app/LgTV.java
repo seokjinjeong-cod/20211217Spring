@@ -1,5 +1,6 @@
 package com.yedam.app;
 
+//@Component
 public class LgTV implements TV {
 
 	public void powerOn() {
