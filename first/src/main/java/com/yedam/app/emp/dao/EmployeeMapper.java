@@ -2,7 +2,11 @@ package com.yedam.app.emp.dao;
 
 import java.util.List;
 
-public interface EmployeeMapper {
+import org.apache.ibatis.annotations.Select;
 
-	List<Employee> find(Employee emp);
+public interface EmployeeMapper {
+	List<Employee> find(EmployeeSearch emp);
+	
+	@Select("select * from employees where employee_id = #{employeeId}")
+	Employee findById(Employee emp);
 }

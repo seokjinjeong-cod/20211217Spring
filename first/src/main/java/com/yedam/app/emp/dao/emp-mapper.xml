@@ -3,8 +3,8 @@
 <mapper namespace="com.yedam.app.emp.dao.EmployeeMapper">
 
 	<select id="find" 
-			parameterType="Employee" 
-			resultType="Employee">
+			resultType="Employee"
+			parameterType="EmployeeSearch"> 
 		select * from 
 		employees 
 		<where>
@@ -13,6 +13,12 @@
 			</if>
 			<if test="managerId != null and managerId != ''">
 				 AND MANAGER_ID = #{managerId}
+			</if>
+			<if test="employeeIds != null and employeeIds.size() > 0">
+				AND EMPLOYEE_ID in
+				<foreach collection="employeeIds" item="item" open="(" separator="," close=")">
+					#{item}
+				</foreach>
 			</if>
 		</where>
 	</select>

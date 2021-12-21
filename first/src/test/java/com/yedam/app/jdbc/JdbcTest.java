@@ -35,8 +35,8 @@ public class JdbcTest {
 		List<Department> list = 
 				jdbcTemplate.query("select * from departments", (rs, rowNum) -> {
 						Department dept = new Department();
-						dept.department_id = rs.getString("department_id");
-						dept.department_name = rs.getString("department_name");
+						dept.setDepartmentId(rs.getString("department_id"));
+						dept.setDepartmentName(rs.getString("department_name"));
 						return dept;
 					}, null);
 		System.out.println(list);
